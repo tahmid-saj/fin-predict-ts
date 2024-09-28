@@ -1,3 +1,5 @@
+// shared constants
+
 export const NAV_LINKS = {
   headers: {
     home: "Home",
@@ -28,7 +30,7 @@ export const COLOR_CODES = {
     "#343535"
   ],
   text: [
-    "e4dfdf"
+    "#e4dfdf"
   ],
   cardMedia: {
     width: "400px",
@@ -38,3 +40,9 @@ export const COLOR_CODES = {
     "#4CAF50"
   ]
 }
+
+export const BUTTON_TYPE_CLASSES = {
+  base: "base",
+  google: "google-sign-in",
+  inverted: "inverted"
+};
