@@ -1,0 +1,10 @@
+.custom-navbar {
+  width: 96%;      /* Takes up full width minus 2% margin on each side */
+  margin: 2%;      /* 2% margin around the navbar */
+  padding: 2%;     /* 2% padding inside the navbar */
+  box-sizing: border-box; /* Ensures padding does not increase the element size */
+
+  a {
+    color: white;
+  }
+}
