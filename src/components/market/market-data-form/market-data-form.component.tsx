@@ -1,34 +1,56 @@
-import { useState } from "react"
+import { useContext, useState } from "react"
 import FormInput from "../../shared/form-input/form-input.component"
 import { DropButton } from "../../shared/drop-button/drop-button.styles"
 import "./market-data-form.styles"
 import { SearchMarketDataContainer, SearchMarketDataForm, SearchMarketDataFormContainer, 
   SearchMarketDataHeader, SearchMarketDataLabel, SearchMarketDataFormButtons } from "./market-data-form.styles"
 import Button from "../../shared/button/button.component"
+import { MarketDataContext } from "../../../contexts/market/market.context"
+
+const initialFormFields = {
+  marketDataType: "Stocks",
+  marketDataTicker: "AAPL",
+  marketDataInterval: "Day",
+  marketDataStartDate: "",
+  marketDataEndDate: ""
+}
 
 const defaultFormFields = {
-  category: "",
-  ticker: "",
-  interval: "",
-  startDate: "",
-  endDate: ""
+  marketDataType: "",
+  marketDataTicker: "",
+  marketDataInterval: "",
+  marketDataStartDate: "",
+  marketDataEndDate: ""
 }
 
 const MarketDataForm = () => {
-  const [formFields, setFormFields] = useState(defaultFormFields)
+  const [formFields, setFormFields] = useState(initialFormFields)
+  const { searchMarketData } = useContext(MarketDataContext)
 
   const resetFormFields = () => {
     setFormFields(defaultFormFields)
   }
 
-  const handleChange = (event) => {
+  const handleChange = (event: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
     const { name, value } = event.target
 
     setFormFields({ ...formFields, [name]: value })
   }
 
-  const handleSubmit = (event) => {
+  const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault()
+
+    if (
+      formFields.marketDataType === "" ||
+      formFields.marketDataTicker === "" ||
+      formFields.marketDataInterval === "" ||
+      formFields.marketDataStartDate === "" ||
+      formFields.marketDataEndDate === ""
+    ) {
+      return;
+    }
+
+    searchMarketData(formFields)
 
     resetFormFields()
   }
@@ -45,10 +67,10 @@ const MarketDataForm = () => {
               <DropButton
                 required
                 className="dropButton"
-                name="marketDataInterval"
-                id="marketDataInterval"
+                name="marketDataType"
+                id="marketDataType"
                 onChange={handleChange}
-                value={formFields.category}
+                value={formFields.marketDataType}
               >
                 <option value="Crypto">Crypto</option>
                 <option value="Currencies">Currencies</option>
@@ -56,17 +78,18 @@ const MarketDataForm = () => {
                 <option value="Stocks">Stocks</option>
               </DropButton>
 
-              <FormInput name="ticker" type="text" value={ formFields.ticker }
+              <FormInput name="marketDataTicker" type="text" value={ formFields.marketDataTicker }
                 label="Ticker" onChange={ handleChange }/>
 
               <SearchMarketDataLabel>Interval</SearchMarketDataLabel>
+
               <DropButton
                 required
                 className="dropButton"
                 name="marketDataInterval"
                 id="marketDataInterval"
                 onChange={handleChange}
-                value={formFields.interval}
+                value={formFields.marketDataInterval}
               >
                 <option value="Hour">Hour</option>
                 <option value="Day">Day</option>
@@ -79,11 +102,11 @@ const MarketDataForm = () => {
           <div className="col-sm-12 col-md-6 col-lg-6">
             <SearchMarketDataFormContainer>
               <SearchMarketDataLabel>Start date</SearchMarketDataLabel>
-              <FormInput name="startDate" type="date" value={ formFields.startDate }
+              <FormInput name="marketDataStartDate" type="date" value={ formFields.marketDataStartDate }
                 label="Start date" onChange={ handleChange }/>
 
               <SearchMarketDataLabel>End date</SearchMarketDataLabel>
-              <FormInput name="endDate" type="date" value={ formFields.endDate }
+              <FormInput name="marketDataEndDate" type="date" value={ formFields.marketDataEndDate }
                 label="End date" onChange={ handleChange }/>
             </SearchMarketDataFormContainer>
           </div>
@@ -95,9 +118,7 @@ const MarketDataForm = () => {
             <Button type="button" onClick={ resetFormFields }>Clear</Button>
           </SearchMarketDataFormButtons>
         </div>
-
       </div>
-      
 
       </SearchMarketDataForm>
     </SearchMarketDataContainer>

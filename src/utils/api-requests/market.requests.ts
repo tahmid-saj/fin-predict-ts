@@ -4,7 +4,7 @@ import { errorOnGetCryptoMarketData, errorOnGetForexMarketData, errorOnGetIndice
 // stocks
 export async function getStockMarketData(marketDataQuery: MarketDataQuery): Promise<any> {
   try {
-    const response = await fetch(`${import.meta.env.REACT_APP_API_URL_MARKET_DATA}${import.meta.env.REACT_APP_API_URL_MARKET_DATA_STOCKS}`, {
+    const response = await fetch(`${import.meta.env.VITE_API_URL_MARKET_DATA}${import.meta.env.VITE_API_URL_MARKET_DATA_STOCKS}`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json"
@@ -24,7 +24,7 @@ export async function getStockMarketData(marketDataQuery: MarketDataQuery): Prom
 // indices
 export async function getIndicesMarketData(marketDataQuery: MarketDataQuery): Promise<any> {
   try {
-    const response = await fetch(`${import.meta.env.REACT_APP_API_URL_MARKET_DATA}${import.meta.env.REACT_APP_API_URL_MARKET_DATA_INDICES}`, {
+    const response = await fetch(`${import.meta.env.VITE_API_URL_MARKET_DATA}${import.meta.env.VITE_API_URL_MARKET_DATA_INDICES}`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json"
@@ -44,7 +44,7 @@ export async function getIndicesMarketData(marketDataQuery: MarketDataQuery): Pr
 // stocks
 export async function getCryptoMarketData(marketDataQuery: MarketDataQuery): Promise<any> {
   try {
-    const response = await fetch(`${import.meta.env.REACT_APP_API_URL_MARKET_DATA}${import.meta.env.REACT_APP_API_URL_MARKET_DATA_CRYPTO}`, {
+    const response = await fetch(`${import.meta.env.VITE_API_URL_MARKET_DATA}${import.meta.env.VITE_API_URL_MARKET_DATA_CRYPTO}`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json"
@@ -64,7 +64,7 @@ export async function getCryptoMarketData(marketDataQuery: MarketDataQuery): Pro
 // stocks
 export async function getForexMarketData(marketDataQuery: MarketDataQuery): Promise<any> {
   try {
-    const response = await fetch(`${import.meta.env.REACT_APP_API_URL_MARKET_DATA}${import.meta.env.REACT_APP_API_URL_MARKET_DATA_FOREX}`, {
+    const response = await fetch(`${import.meta.env.VITE_API_URL_MARKET_DATA}${import.meta.env.VITE_API_URL_MARKET_DATA_FOREX}`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json"
