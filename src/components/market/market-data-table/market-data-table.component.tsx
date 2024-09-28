@@ -2,13 +2,27 @@ import "./market-data-table.styles";
 import { AgGridReact } from "ag-grid-react"; // React Data Grid Component
 import "ag-grid-community/styles/ag-grid.css"; // Mandatory CSS required by the grid
 import "ag-grid-community/styles/ag-theme-quartz.css"; // Optional Theme applied to the grid
-import { useState } from "react";
+import { Fragment, useContext, useState } from "react";
 import { ColDef } from "ag-grid-community"; // Import ColDef type from ag-grid
 import { COMMON_SPACING } from "../../../utils/constants/shared.constants";
+import { MarketDataContext } from "../../../contexts/market/market.context";
 
 const MarketDataTable = () => {
+  const { marketData } = useContext(MarketDataContext)
+
+  if (!marketData || !marketData.queryResults) {
+    return <Fragment/>
+  }
+
+  const { queryResults } = marketData
+
   // Define row data type
-  const rowData = [{ Date: "1", ClosingPrice: 2 }];
+  const rowData = queryResults.map((queryResult) => {
+    return {
+      Date: queryResult.time,
+      ClosingPrice: queryResult.closing
+    }
+  })
 
   // Define columnDefs with correct type
   const [columnDefs, setColumnDefs] = useState<ColDef[]>([

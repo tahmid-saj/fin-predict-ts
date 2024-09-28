@@ -14,7 +14,7 @@ export async function getStockMarketData(marketDataQuery: MarketDataQuery): Prom
 
     const resMarketData = await response.json()
 
-    return resMarketData
+    return resMarketData.queryResults
   } catch (error) {
     console.log(error)
     errorOnGetStocksMarketData()
@@ -34,7 +34,7 @@ export async function getIndicesMarketData(marketDataQuery: MarketDataQuery): Pr
 
     const resMarketData = await response.json()
 
-    return resMarketData
+    return resMarketData.queryResults
   } catch (error) {
     console.log(error)
     errorOnGetIndicesMarketData()
@@ -54,7 +54,7 @@ export async function getCryptoMarketData(marketDataQuery: MarketDataQuery): Pro
 
     const resMarketData = await response.json()
 
-    return resMarketData
+    return resMarketData.queryResults
   } catch (error) {
     console.log(error)
     errorOnGetCryptoMarketData()
@@ -74,7 +74,7 @@ export async function getForexMarketData(marketDataQuery: MarketDataQuery): Prom
 
     const resMarketData = await response.json()
 
-    return resMarketData
+    return resMarketData.queryResults
   } catch (error) {
     console.log(error)
     errorOnGetForexMarketData()

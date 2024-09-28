@@ -14,14 +14,13 @@ export const SearchMarketDataForm = styled.form`
   display: flex;
   justify-content: center;
   align-items: center;
-  margin: 2%;
   padding: 2%;
 `
 
 export const SearchMarketDataHeader = styled.h2`
   color: ${COLOR_CODES.text[0]};
-  margin: 5%;
-  padding: 5%;
+  margin: 2%;
+  padding: 3%;
 `
 
 export const SearchMarketDataLabel = styled.p`
