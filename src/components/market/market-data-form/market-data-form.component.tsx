@@ -1,8 +1,10 @@
 import { useState } from "react"
-import FormInput from "../../shared/media-card/form-input/form-input.component"
+import FormInput from "../../shared/form-input/form-input.component"
 import { DropButton } from "../../shared/drop-button/drop-button.styles"
 import "./market-data-form.styles"
-import { SearchMarketDataContainer, SearchMarketDataForm, SearchMarketDataFormContainer, SearchMarketDataHeader, SearchMarketDataLabel } from "./market-data-form.styles"
+import { SearchMarketDataContainer, SearchMarketDataForm, SearchMarketDataFormContainer, 
+  SearchMarketDataHeader, SearchMarketDataLabel, SearchMarketDataFormButtons } from "./market-data-form.styles"
+import Button from "../../shared/button/button.component"
 
 const defaultFormFields = {
   category: "",
@@ -25,10 +27,16 @@ const MarketDataForm = () => {
     setFormFields({ ...formFields, [name]: value })
   }
 
+  const handleSubmit = (event) => {
+    event.preventDefault()
+
+    resetFormFields()
+  }
+
   return (
     <SearchMarketDataContainer>
       <SearchMarketDataHeader>Search market data</SearchMarketDataHeader>
-      <SearchMarketDataForm>
+      <SearchMarketDataForm onSubmit={ handleSubmit }>
 
       <div className="container">
         <div className="row">
@@ -80,9 +88,17 @@ const MarketDataForm = () => {
             </SearchMarketDataFormContainer>
           </div>
         </div>
-      </div>
 
-          
+        <div className="row">
+          <SearchMarketDataFormButtons>
+            <Button type="submit">Search</Button>
+            <Button type="button" onClick={ resetFormFields }>Clear</Button>
+          </SearchMarketDataFormButtons>
+        </div>
+
+      </div>
+      
+
       </SearchMarketDataForm>
     </SearchMarketDataContainer>
   )

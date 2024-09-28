@@ -31,5 +31,10 @@ export const SearchMarketDataLabel = styled.p`
 export const SearchMarketDataFormContainer = styled.div`
   padding: 4%;
   width: 400px;
+`
 
+export const SearchMarketDataFormButtons = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
 `

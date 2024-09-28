@@ -1,7 +1,8 @@
 .custom-navbar {
-  margin: 1%;
+  margin: 0% 1% 1% 1%;
   padding: 1%;
   box-sizing: border-box; /* Ensures padding does not increase the element size */
+  z-index: 999;
 
   a {
     color: white;

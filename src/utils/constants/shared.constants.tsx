@@ -46,3 +46,14 @@ export const BUTTON_TYPE_CLASSES = {
   google: "google-sign-in",
   inverted: "inverted"
 };
+
+export const COMMON_SPACING = {
+  lineChart: {
+    width: "100%",
+    height: 400
+  },
+  table: {
+    width: "100%",
+    height: 400
+  }
+}
