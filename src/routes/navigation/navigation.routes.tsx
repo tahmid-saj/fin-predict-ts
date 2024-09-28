@@ -70,7 +70,9 @@ export const Navigation = () => {
           </div>
         </div>
       </nav>
-      <Outlet />
+      <div className="outlet-container">
+        <Outlet />
+      </div>
     </Fragment>
   );
 };
