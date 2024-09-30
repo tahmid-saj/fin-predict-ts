@@ -8,6 +8,7 @@ export const SearchMarketDataContainer = styled.div`
   background-color: ${COLOR_CODES.shared[0]};
   border-radius: 0.5rem;
   box-shadow: 5px 5px #000000;
+  margin-top: 5%;
 `
 
 export const SearchMarketDataForm = styled.form`

@@ -9,7 +9,7 @@ import { MarketDataContext } from "../../../contexts/market/market.context";
 import { MarketDataContextType } from "../../../contexts/market/market.types";
 
 interface QueryResult {
-  time: string | number;
+  time: string;
   closing: number;
 }
 

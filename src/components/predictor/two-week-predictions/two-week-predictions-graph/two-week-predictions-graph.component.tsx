@@ -3,20 +3,25 @@ import "./two-week-predictions-graph.styles"
 import ReactApexChart from "react-apexcharts"
 import { ApexOptions } from "apexcharts"
 import { COLOR_CODES, COMMON_SPACING } from "../../../../utils/constants/shared.constants"
-import { Fragment, useContext } from "react/jsx-runtime"
-import { TwoWeekPredictionsGraphContainer } from "./two-week-predictions-graph.styles"
-
-interface PredictionResult {
-  predictionDate: string | Date;
-  predictionPrice: number;
-}
+import { PredictionsContext } from "../../../../contexts/predictor/predictions.context"
+import { PredictionsContextType } from "../../../../contexts/predictor/predictions.types"
+import { PREDICTION_TICKERS } from "../../../../utils/constants/predictions.constants"
+import { Fragment, useContext } from "react"
 
 const TwoWeekPredictionsGraph = () => {
+  const { displayedPredictionData } = useContext<PredictionsContextType>(PredictionsContext)
+
+  if (!displayedPredictionData || !displayedPredictionData.twoWeekPredictions) {
+    return (
+      <Fragment/>
+    )
+  }
+
   // Define the data series for the chart
   const series = [
     {
-      name: "predictions 2 week",
-      data: [1, 2, 3]
+      name: PREDICTION_TICKERS[0],
+      data: displayedPredictionData.twoWeekPredictions.predictionPrices
     },
   ];
 
@@ -36,10 +41,10 @@ const TwoWeekPredictionsGraph = () => {
       curve: "straight",
     },
     title: {
-      text: `2 week predictions`,
+      text: `${PREDICTION_TICKERS[0]} - 2 Week Predictions`,
       align: "left",
     },
-    labels: ["1", "2", "3"],
+    labels: displayedPredictionData.twoWeekPredictions.predictionDates as string[],
     xaxis: {
       type: "category", // Correct the type to 'category' for string labels
       labels: {
@@ -55,15 +60,13 @@ const TwoWeekPredictionsGraph = () => {
   };
 
   return (
-    <TwoWeekPredictionsGraphContainer>
-      <ReactApexChart
-        options={ options }
-        series={ series }
-        type="area"
-        height={ COMMON_SPACING.lineChart.height }
-        width={ COMMON_SPACING.lineChart.width }>
-      </ReactApexChart>
-    </TwoWeekPredictionsGraphContainer>
+    <ReactApexChart
+      options={ options }
+      series={ series }
+      type="area"
+      height={ COMMON_SPACING.lineChart.height }
+      width={ COMMON_SPACING.lineChart.width }>
+    </ReactApexChart>
   )
 }
 
