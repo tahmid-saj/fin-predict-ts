@@ -5,12 +5,24 @@ import "ag-grid-community/styles/ag-theme-quartz.css"; // Optional Theme applied
 import { Fragment, useContext, useState } from "react";
 import { ColDef } from "ag-grid-community"; // Import ColDef type from ag-grid
 import { COMMON_SPACING } from "../../../../utils/constants/shared.constants";
+import { PredictionsContext } from "../../../../contexts/predictor/predictions.context";
 
 const TwoWeekPredictionsTable = () => {
+  const { displayedPredictionData } = useContext(PredictionsContext)
+
+  if (!displayedPredictionData || !displayedPredictionData.twoWeekPredictions) {
+    return (
+      <Fragment/>
+    )
+  }
+
   // Define row data type
-  const rowData = [
-    { PredictionDate: "2024-09-30", PredictionPrice: 1234 }
-  ]
+  const rowData = displayedPredictionData.twoWeekPredictions.predictionDates.map((predictionDate, predictionIndex) => {
+    return {
+      PredictionDate: predictionDate,
+      PredictionPrice: displayedPredictionData.twoWeekPredictions.predictionPrices[predictionIndex].toFixed(2)
+    }
+  })
 
   // Define columnDefs with correct type
   const [columnDefs, setColumnDefs] = useState<ColDef[]>([
