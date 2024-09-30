@@ -6,6 +6,7 @@ import { SearchMarketDataContainer, SearchMarketDataForm, SearchMarketDataFormCo
   SearchMarketDataHeader, SearchMarketDataLabel, SearchMarketDataFormButtons } from "./market-data-form.styles"
 import Button from "../../shared/button/button.component"
 import { MarketDataContext } from "../../../contexts/market/market.context"
+import { MarketDataContextType } from "../../../contexts/market/market.types"
 
 const initialFormFields = {
   marketDataType: "Stocks",
@@ -25,7 +26,7 @@ const defaultFormFields = {
 
 const MarketDataForm = () => {
   const [formFields, setFormFields] = useState(initialFormFields)
-  const { searchMarketData } = useContext(MarketDataContext)
+  const { searchMarketData } = useContext<MarketDataContextType>(MarketDataContext)
 
   const resetFormFields = () => {
     setFormFields(defaultFormFields)
