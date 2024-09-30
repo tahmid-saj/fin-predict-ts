@@ -4,4 +4,5 @@ export const HomeContainer = styled.div`
   display: block;
   justify-content: center;
   align-items: center;
+  margin-top: 5%;
 `
