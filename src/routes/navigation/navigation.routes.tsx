@@ -34,7 +34,7 @@ export const Navigation = () => {
               </li>
 
               <li className="nav-item">
-                <a className="nav-link" href="#">Predictions</a>
+                <a className="nav-link" href={`${NAV_LINKS.paths.predictions}`}>Predictions</a>
               </li>
 
               <li className="nav-item">
@@ -70,9 +70,7 @@ export const Navigation = () => {
           </div>
         </div>
       </nav>
-      <div className="outlet-container">
-        <Outlet />
-      </div>
+      <Outlet />
     </Fragment>
   );
 };
