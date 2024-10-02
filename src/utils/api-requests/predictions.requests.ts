@@ -2,11 +2,11 @@ import { errorOnGettingDailyPredictionData, errorOnGettingTwoWeekPredictionData 
 
 export const getDailyPrediction = async (predictionTicker: string): Promise<any> => {
   try {
-    const response = await fetch(`${import.meta.env.VITE_API_URL_PREDICTIONS}${import.meta.env.VITE_API_DAILY_PREDICTION}?ticker=${predictionTicker}`, {
+    const response = await fetch(`${import.meta.env.VITE_API_URL_PREDICTIONS}${import.meta.env.VITE_API_DAILY_PREDICTION}/ticker=${predictionTicker}`, {
       mode: 'no-cors'
     })
 
-    const resJSON = await response.json() // This won't work with 'no-cors'
+    const resJSON = await response.json()
     return resJSON
   } catch (error) {
     console.log(error)
@@ -16,11 +16,11 @@ export const getDailyPrediction = async (predictionTicker: string): Promise<any>
 
 export const getTwoWeekPredictions = async (predictionTicker: string): Promise<any> => {
   try {
-    const response = await fetch(`${import.meta.env.VITE_API_URL_PREDICTIONS}${import.meta.env.VITE_API_TWO_WEEK_PREDICTIONS}?ticker=${predictionTicker}`, {
+    const response = await fetch(`${import.meta.env.VITE_API_URL_PREDICTIONS}${import.meta.env.VITE_API_TWO_WEEK_PREDICTIONS}/ticker=${predictionTicker}`, {
       mode: 'no-cors'
     })
 
-    const resJSON = await response.json() // This won't work with 'no-cors'
+    const resJSON = await response.json()
     return resJSON
   } catch (error) {
     console.log(error)
