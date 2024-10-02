@@ -1,9 +1,15 @@
-import { Outlet } from "react-router-dom";
+import { Outlet, useNavigate } from "react-router-dom";
 import { Fragment } from "react/jsx-runtime";
 import { NAV_LINKS } from "../../utils/constants/shared.constants";
 import "./navigation.styles.scss";
 
 export const Navigation = () => {
+  const navigate = useNavigate();
+
+  const navigateToPath = (path: string) => {
+    navigate(path);
+  };
+
   return (
     <Fragment>
       <nav className="navbar navbar-expand-lg navbar-dark custom-navbar">
@@ -30,19 +36,19 @@ export const Navigation = () => {
               </li>
 
               <li className="nav-item">
-                <a className="nav-link" href={`${NAV_LINKS.paths.marketData}`}>Market</a>
+                <a className="nav-link" onClick={ () => navigateToPath(NAV_LINKS.paths.marketData) }>Market</a>
               </li>
 
               <li className="nav-item">
-                <a className="nav-link" href={`${NAV_LINKS.paths.predictions}`}>Predictions</a>
+                <a className="nav-link" onClick={ () => navigateToPath(NAV_LINKS.paths.predictions) }>Predictions</a>
               </li>
 
               <li className="nav-item">
-                <a className="nav-link" href={`${NAV_LINKS.paths.chatbot}`}>Chatbot</a>
+                <a className="nav-link" onClick={ () => navigateToPath(NAV_LINKS.paths.chatbot) }>Chatbot</a>
               </li>
 
               <li className="nav-item">
-                <a className="nav-link" href={`${NAV_LINKS.paths.advice}`}>Advice</a>
+                <a className="nav-link" onClick={ () => navigateToPath(NAV_LINKS.paths.advice) }>Advice</a>
               </li>
 
               <li className="nav-item">

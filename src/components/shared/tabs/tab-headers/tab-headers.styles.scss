@@ -5,9 +5,7 @@
 }
 
 .nav-link {
-  &.active {
-    border-bottom: 3px solid #2167ff !important;
-  }
+  color: beige;
 }
 
 @media (max-width: 768px) {
