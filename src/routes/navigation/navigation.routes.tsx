@@ -47,19 +47,22 @@ export const Navigation = () => {
 
               <li className="nav-item">
                 <a className="nav-link" href={`${NAV_LINKS.paths.github}`}>
-                  <ion-icon name="logo-github"></ion-icon>
+                  {/* <IonIcon name="logo-github"></IonIcon> */}
+                  GitHub
                 </a>
               </li>
 
               <li className="nav-item">
                 <a className="nav-link" href={`${NAV_LINKS.paths.medium}`}>
-                  <ion-icon name="logo-medium"></ion-icon>
+                  {/* <IonIcon name="logo-medium"></IonIcon> */}
+                  Medium
                 </a>
               </li>
 
               <li className="nav-item">
                 <a className="nav-link" href={`${NAV_LINKS.paths.linkedIn}`}>
-                  <ion-icon name="logo-linkedin"></ion-icon>
+                  {/* <IonIcon name="logo-linkedin"></IonIcon> */}
+                  LinkedIn
                 </a>
               </li>
 
