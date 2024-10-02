@@ -15,6 +15,7 @@ export interface PredictionsProviderProps {
 }
 
 export type PredictionData = {
+  predictionTicker: string;
   dailyPrediction: DailyPrediction;
   twoWeekPredictions: TwoWeekPrediction;
 }

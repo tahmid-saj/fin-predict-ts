@@ -1,7 +1,7 @@
 import { createContext, FC, useEffect, useState } from "react";
 import { PredictionData, PredictionsContextType, PredictionsProviderProps } from "./predictions.types";
 import { getDailyPrediction, getTwoWeekPredictions } from "../../utils/api-requests/predictions.requests";
-import { PREDICTION_TICKERS } from "../../utils/constants/predictions.constants";
+import { PREDICTION_TICKERS, PREDICTION_TICKERS_INPUT } from "../../utils/constants/predictions.constants";
 
 // helper functions
 
@@ -10,6 +10,7 @@ const displayPredictionDataHelper = async (predictionTicker: string): Promise<Pr
   const resTwoWeekPrediction = await getTwoWeekPredictions(predictionTicker)
 
   return {
+    predictionTicker: predictionTicker,
     dailyPrediction: {
       predictionDate: resDailyPrediction.prediction_date,
       predictionPrice: resDailyPrediction.prediction_price
@@ -44,7 +45,7 @@ export const PredictionsProvider: FC<PredictionsProviderProps> = ({ children }) 
   useEffect(() => {
     const getPredictionData = async () => {
       setPredictionTickers(PREDICTION_TICKERS)
-      const updatedPredictionData = await displayPredictionDataHelper(PREDICTION_TICKERS[0])
+      const updatedPredictionData = await displayPredictionDataHelper(PREDICTION_TICKERS_INPUT.BTC)
       setDisplayedPredictionData(updatedPredictionData)
     }
 
@@ -52,7 +53,16 @@ export const PredictionsProvider: FC<PredictionsProviderProps> = ({ children }) 
   }, [])
 
   const displayPredictionData = async (predictionTicker: string): Promise<void> => {
-    const updatedPredictionData = await displayPredictionDataHelper(predictionTicker)
+    let predictionTickerInput: string = "";
+    if (predictionTicker === PREDICTION_TICKERS[0]) {
+      predictionTickerInput = PREDICTION_TICKERS_INPUT.BTC
+    } else if (predictionTicker === PREDICTION_TICKERS[1]) {
+      predictionTickerInput = PREDICTION_TICKERS_INPUT.SP500
+    } else if (predictionTicker === PREDICTION_TICKERS[2]) {
+      predictionTickerInput = PREDICTION_TICKERS_INPUT.META
+    }
+
+    const updatedPredictionData = await displayPredictionDataHelper(predictionTickerInput)
     setDisplayedPredictionData(updatedPredictionData)
   }
 

@@ -5,7 +5,6 @@ import { ApexOptions } from "apexcharts"
 import { COLOR_CODES, COMMON_SPACING } from "../../../../utils/constants/shared.constants"
 import { PredictionsContext } from "../../../../contexts/predictor/predictions.context"
 import { PredictionsContextType } from "../../../../contexts/predictor/predictions.types"
-import { PREDICTION_TICKERS } from "../../../../utils/constants/predictions.constants"
 import { Fragment, useContext } from "react"
 
 const TwoWeekPredictionsGraph = () => {
@@ -20,7 +19,7 @@ const TwoWeekPredictionsGraph = () => {
   // Define the data series for the chart
   const series = [
     {
-      name: PREDICTION_TICKERS[0],
+      name: displayedPredictionData.predictionTicker,
       data: displayedPredictionData.twoWeekPredictions.predictionPrices
     },
   ];
@@ -41,7 +40,7 @@ const TwoWeekPredictionsGraph = () => {
       curve: "straight",
     },
     title: {
-      text: `${PREDICTION_TICKERS[0]} - 2 Week Predictions`,
+      text: `${displayedPredictionData.predictionTicker} - 2 Week Predictions`,
       align: "left",
     },
     labels: displayedPredictionData.twoWeekPredictions.predictionDates as string[],
