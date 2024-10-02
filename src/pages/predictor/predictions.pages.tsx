@@ -21,7 +21,7 @@ const Predictions = () => {
     displayedPredictionData && displayedPredictionData !== undefined &&
     <PredictionsContainer>
       <InfoPaper>
-        <TabHeaders tabHeaders={ predictionTickers } activeTabHeader={ predictionTickers[0] } 
+        <TabHeaders tabHeaders={ predictionTickers } activeTabHeader={ displayedPredictionData.predictionTicker } 
           tabHeaderClickHandler={ displayPredictionDataHandler }></TabHeaders>
         
         <TabContent>
