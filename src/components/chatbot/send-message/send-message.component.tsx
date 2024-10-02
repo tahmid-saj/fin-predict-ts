@@ -1,7 +1,8 @@
-import { useState } from "react"
+import { useContext, useState } from "react"
 import "./send-message.styles"
 import Button from "../../shared/button/button.component"
 import { SendMessageForm, SendMessageInput } from "./send-message.styles"
+import { ChatbotContext } from "../../../contexts/chatbot/chatbot.context"
 
 const defaultFormFields = {
   messageInput: ""
@@ -9,6 +10,8 @@ const defaultFormFields = {
 
 const SendMessage = () => {
   const [formFields, setFormFields] = useState(defaultFormFields)
+
+  const { getChatbotResponse } = useContext(ChatbotContext)
 
   const resetFormFields = () => {
     setFormFields(defaultFormFields)
@@ -22,6 +25,8 @@ const SendMessage = () => {
 
   const handleSubmit = (event) => {
     event.preventDefault()
+
+    getChatbotResponse(formFields.messageInput)
 
     resetFormFields()
   }
